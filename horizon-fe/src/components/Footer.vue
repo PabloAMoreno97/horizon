@@ -25,4 +25,9 @@
     background-color: rgb(73, 73, 82);
     color: white
 }
+
+.footer div {
+    display: flex;
+    justify-content: space-around;
+}
 </style>
