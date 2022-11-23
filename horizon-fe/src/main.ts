@@ -19,6 +19,4 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 
 library.add(faUser, faBars, faMagnifyingGlass, faCartShopping, faLocationDot);
 
-use(BootstrapVue);
-use(IconsPlugin);
 createApp(App).component("font-awesome-icon", FontAwesomeIcon).mount("#app");
