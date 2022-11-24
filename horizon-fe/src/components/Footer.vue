@@ -1,6 +1,3 @@
-<script lang="ts">
-</script>
-
 <template>
     <div class="footer">
         <p class="footer-topPage">top page</p>

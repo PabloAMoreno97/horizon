@@ -1,23 +1,27 @@
 <script lang="ts">
 
+import LeftSideBar from './LeftSideBar.vue';
+
 export default {
+
     data() {
         return {
             firstName: "pablo",
             userCity: "Envigado",
             userZipCode: "055422",
-            articleTypesList: ["Deals", "Horizon Basic", "Buy Again", "Video", "Best Sellers", "Livestreams", "Books", "Home", "New Releases", "Gift Cards", "Health & Household"]
+            articleTypesList: ["Deals", "Horizon Basic", "Buy Again", "Video", "Best Sellers", "Livestreams", "Books", "Home", "New Releases", "Gift Cards", "Health & Household"],
         }
     },
 }
 </script>
 
 <template>
+
     <div class="header">
         <div class="header-firstLine">
             <span>
-                <font-awesome-icon icon="fa-solid fa-bars" class="header-bars" />
                 <a href="#">
+                    <LeftSideBar></LeftSideBar>
                     <img src="../assets/logo_horizon.png" alt="Horizon" class="header-logo__img">
                 </a>
             </span>
@@ -42,7 +46,7 @@ export default {
                 <a href="#">{{ articleType }}</a>
             </span>
         </div>
-        <div class="header-addres">
+        <div class="header-address">
             <span>
                 <font-awesome-icon icon="fa-solid fa-location-dot" /> Deliver to {{ firstName }} - {{ userCity }} {{
         userZipCode
@@ -65,7 +69,7 @@ a {
     flex-direction: column;
 }
 
-.header-addres {
+.header-address {
     background-color: rgb(73, 73, 82);
     padding: 0.5rem 0.7rem;
     color: white;
@@ -88,7 +92,7 @@ a {
     overflow-x: scroll;
     scrollbar-width: none;
     margin-top: 0.5rem;
-    height: 2.3rem;
+    height: 2.5rem;
 }
 
 .header-articleTypes::-webkit-scrollbar {

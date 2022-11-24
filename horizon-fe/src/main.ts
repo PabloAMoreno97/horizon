@@ -13,10 +13,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 
-import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
+// Vuetify
+import "vuetify/styles";
+import { createVuetify } from "vuetify";
+import * as components from "vuetify/components";
+import * as directives from "vuetify/directives";
 
 library.add(faUser, faBars, faMagnifyingGlass, faCartShopping, faLocationDot);
 
-createApp(App).component("font-awesome-icon", FontAwesomeIcon).mount("#app");
+const vuetify = createVuetify({
+  components,
+  directives,
+});
+
+const app = createApp(App);
+app.component("font-awesome-icon", FontAwesomeIcon);
+app.use(vuetify);
+app.mount("#app");

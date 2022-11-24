@@ -16,7 +16,10 @@
     "@fortawesome/vue-fontawesome": "^3.0.2",
     "bootstrap": "^5.2.3",
     "bootstrap-vue": "^2.23.1",
-    "vue": "^3.2.45"
+    "bootstrap-vue-3": "^0.4.10",
+    "vue": "^3.2.45",
+    "vue-sidebar-menu": "^5.2.4",
+    "vuetify": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "^16.11.68",
