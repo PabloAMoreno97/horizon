@@ -10,6 +10,9 @@ import {
   faBars,
   faCartShopping,
   faLocationDot,
+  faGlobe,
+  faFlagUsa,
+  faArrowCircleUp
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 
@@ -19,7 +22,7 @@ import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
-library.add(faUser, faBars, faMagnifyingGlass, faCartShopping, faLocationDot);
+library.add(faUser, faBars, faMagnifyingGlass, faCartShopping, faLocationDot, faGlobe, faFlagUsa, faArrowCircleUp);
 
 const vuetify = createVuetify({
   components,
