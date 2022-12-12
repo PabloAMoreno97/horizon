@@ -17,6 +17,9 @@ export default {
             language: "English",
             currency: "$ - USD - US Dollar",
             articleTypesList: ["Deals", "Horizon Basic", "Buy Again", "Video", "Best Sellers", "Livestreams", "Books", "Home", "New Releases", "Gift Cards", "Health & Household"],
+            trendingSection: 'Movers & Shakers',
+            topDepartments: ['Home', 'Health & Household', 'Books', 'PC'],
+            departments: ['HoliDeals', 'Horizon Music', 'Horizon Video', 'Books', 'Horizon Custom', 'Horizon Discover', 'Horizon Explore', 'Horizon Launchpad']
         }
     },
 }
@@ -29,36 +32,59 @@ export default {
                 <div class="header-firstLine">
                     <span>
                         <v-layout id="leftSideBarButton">
+
                             <v-navigation-drawer v-model="browse" temporary>
-                                <v-list>
-                                    <v-list-item>
-                                        <div>
-                                            <p>Your Account</p>
-                                            <v-btn color="transparent"
-                                                @click.stop="(yourAccount = !yourAccount) && (browse = false)">
-                                                <font-awesome-icon icon="fa-regular fa-user" class="header-userIcon" />
-                                            </v-btn>
-                                        </div>
-
+                                <section class="leftNav-header">
+                                    <div id="leftNav-account">
+                                        <v-btn color="transparent"
+                                            @click.stop="(yourAccount = !yourAccount) && (browse = false)">
+                                            <p>Your Account </p>
+                                            <font-awesome-icon icon="fa-regular fa-user" class="header-userIcon" />
+                                        </v-btn>
+                                    </div>
+                                    <div class="leftNav-title">
                                         <h3>Browse</h3>
-                                        <h3>Horizon</h3>
-                                    </v-list-item>
-
-                                </v-list>
-
-                                <v-divider></v-divider>
-
-                                <v-list density="compact" nav>
-                                    <v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home">
-                                    </v-list-item>
-                                    <v-list-item prepend-icon="mdi-forum" title="About" value="about"></v-list-item>
-                                </v-list>
+                                        <h2>Horizon</h2>
+                                    </div>
+                                </section>
+                                <section class="leftNav-homeContainer">
+                                    <a href="/" class="leftNav-home">
+                                        <span>Horizon Home</span>
+                                        <span><font-awesome-icon icon="fa-solid fa-home" /></span>
+                                    </a>
+                                </section>
+                                <section class="leftNav-trending">
+                                    <h3>Trending</h3>
+                                    <p> <a href="">{{ trendingSection }}</a> </p>
+                                </section>
+                                <section class="leftNav-departments">
+                                    <h3>Top Departments</h3>
+                                    <ul>
+                                        <li v-for="topDepartment in topDepartments">
+                                            <a href="">{{ topDepartment }}</a>
+                                        </li>
+                                        <li>
+                                            <v-list-group>
+                                                <template v-slot:activator>
+                                                    <v-list-item-content>
+                                                        <v-list-item-title>See All</v-list-item-title>
+                                                    </v-list-item-content>
+                                                </template>
+                                                <v-list-item v-for="(department, i) in departments" :key="i" link>
+                                                    <v-list-item v-text="department"></v-list-item>
+                                                </v-list-item>
+                                            </v-list-group>
+                                        </li>
+                                    </ul>
+                                </section>
                             </v-navigation-drawer>
+
                             <div>
                                 <v-btn color="transparent" @click.stop="(browse = !browse) && (yourAccount = false)">
                                     <font-awesome-icon icon="fa-solid fa-bars" class="header-bars" />
                                 </v-btn>
                             </div>
+
                         </v-layout>
                         <a href="#">
                             <img src="../assets/logo_horizon.png" alt="Horizon" class="header-logo__img">
@@ -68,17 +94,20 @@ export default {
                         <span>
                             <v-layout id="rightSideBarButton">
                                 <v-navigation-drawer v-model="yourAccount" location="right" temporary>
-                                    <v-list-item prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
-                                        title="John Leider">
-                                    </v-list-item>
-
-                                    <v-divider></v-divider>
-
-                                    <v-list density="compact" nav>
-                                        <v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home">
-                                        </v-list-item>
-                                        <v-list-item prepend-icon="mdi-forum" title="About" value="about"></v-list-item>
-                                    </v-list>
+                                    <section class="rightNav-header">
+                                        <div id="rightNav-browse">
+                                            <v-btn color="transparent"
+                                                @click.stop="(browse = !browse) && (yourAccount = false)">
+                                                <span class="rightNav-browse__text">Browse</span>
+                                                <span><font-awesome-icon icon="fa-solid fa-bars"
+                                                        class="rightNav-browse__icon" /></span>
+                                            </v-btn>
+                                        </div>
+                                        <div class="rightNav-title">
+                                            <h3>Hello, {{ firstName }}</h3>
+                                            <h2>Your Account</h2>
+                                        </div>
+                                    </section>
                                 </v-navigation-drawer>
                                 <v-btn color="transparent"
                                     @click.stop="(yourAccount = !yourAccount) && (browse = false)">
@@ -142,7 +171,7 @@ export default {
                     <li><a href="#">Returns</a></li>
                     <li><a href="#">1-Click Settings</a></li>
                     <li><a href="#">Customer Service</a></li>
-                    <li><a href="#">Your Recalls and Product Safety Alerts</a></li>
+                    <li><a href="#">Your Recalls</a></li>
                     <li><a href="#">Help</a></li>
                 </ul>
             </section>
@@ -388,5 +417,115 @@ a {
 .footer-rights {
     margin-top: 0.5rem;
     margin-bottom: 2rem;
+}
+
+.leftNav-header {
+    background-color: rgb(53, 53, 58);
+    color: white;
+}
+
+#leftNav-account {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: end;
+}
+
+#leftNav-account p {
+    font-size: 0.6rem;
+    font-weight: 600;
+}
+
+#leftNav-account svg {
+    width: 1rem;
+}
+
+.leftNav-title {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+}
+
+.leftNav-title h3 {
+    height: 1.2rem;
+}
+
+.leftNav-title h2 {
+    height: 3rem;
+}
+
+.leftNav-home {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-weight: 600;
+}
+
+.leftNav-homeContainer {
+    border-bottom: 0.3rem solid rgb(211, 192, 192);
+}
+
+.leftNav-trending {
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+    border-bottom: 0.3rem solid rgb(211, 192, 192);
+}
+
+.leftNav-trending p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.leftNav-trending p a {
+    color: rgb(35, 35, 46);
+}
+
+.leftNav-departments {
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.leftNav-departments h3 {
+    margin-bottom: 0.5rem;
+}
+
+.leftNav-departments ul li {
+    margin-bottom: 0.5rem;
+}
+
+.leftNav-departments ul li a {
+    color: rgb(35, 35, 46);
+    text-decoration: none;
+}
+
+.rightNav-header {
+    padding-left: 1rem;
+    background-color: rgb(35, 35, 46);
+    color: white;
+}
+
+#rightNav-browse {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.rightNav-browse__text {
+    font-size: 0.6rem;
+}
+
+.rightNav-browse__icon {
+    width: 1rem;
+}
+
+.rightNav-title {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.rightNav-header h3 {
+    height: 1.3rem;
 }
 </style>
